@@ -1,0 +1,22 @@
+CREATE TABLE runways (
+    id INT PRIMARY KEY,
+    airport_ref INT,
+    airport_ident VARCHAR(20),
+    length_ft INT,
+    width_ft INT,
+    surface VARCHAR(100),
+    lighted INT,
+    closed INT,
+    le_ident VARCHAR(20),
+    le_latitude_deg DECIMAL,
+    le_longitude_deg DECIMAL,
+    le_elevation_ft INT,
+    le_heading_degT DECIMAL,
+    le_displaced_threshold_ft INT,
+    he_ident VARCHAR(20),
+    he_latitude_deg DECIMAL,
+    he_longitude_deg DECIMAL,
+    he_elevation_ft INT,
+    he_heading_degT DECIMAL,
+    he_displaced_threshold_ft INT
+);
