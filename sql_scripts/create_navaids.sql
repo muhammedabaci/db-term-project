@@ -1,0 +1,22 @@
+CREATE TABLE navaids (
+    id INTEGER PRIMARY KEY,
+    filename TEXT,
+    ident TEXT,
+    name TEXT,
+    type TEXT,
+    frequency_khz INTEGER,
+    latitude_deg DOUBLE PRECISION,
+    longitude_deg DOUBLE PRECISION,
+    elevation_ft INTEGER,
+    iso_country TEXT,
+    dme_frequency_khz INTEGER,
+    dme_channel TEXT,
+    dme_latitude_deg DOUBLE PRECISION,
+    dme_longitude_deg DOUBLE PRECISION,
+    dme_elevation_ft INTEGER,
+    slaved_variation_deg DOUBLE PRECISION,
+    magnetic_variation_deg DOUBLE PRECISION,
+    "usageType" TEXT,
+    power TEXT,
+    associated_airport TEXT
+);
