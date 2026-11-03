@@ -1,7 +1,7 @@
 CREATE TABLE countries (
     id INTEGER PRIMARY KEY,
     code VARCHAR(2) NOT NULL UNIQUE,
-    name TEXT NOT NULL,
+    name VARCHAR(100) NOT NULL,
     continent VARCHAR(2) NOT NULL,
     wikipedia_link TEXT,
     keywords TEXT,
