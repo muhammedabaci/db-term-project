@@ -60,6 +60,40 @@ Takımımız, `backend` klasörü altındaki yöneticileri (manager) `%s` parame
 | `regions` | `regions_manager.py` | SELECT, INSERT | `fk_regions_country` referans bütünlüğü rollback ile test edildi. |
 | `runways` | `runways_manager.py` | SELECT, INSERT | Type Hinting ve spesifik `psycopg2.Error` hata yakalaması eklendi. |
 
+## 8. Hafta: Pist Analitik Raporları
+
+`backend/analytics_runways.py`, Said Sezer'in pist analizi görevlerini içerir:
+
+- `get_lighted_runways(min_length_ft)`: Uzunluğu verilen feet değerinden büyük,
+  aydınlatmalı pistleri havalimanı ve bölge adlarıyla getirir. Satırlar
+  `(runway_id, airport_name, region_name, surface, length_ft)` biçimindedir;
+  en uzun pist önce gelir.
+- `get_surfaces_with_many_runways(min_runway_count=1000)`: Dünya genelindeki
+  pistleri yüzey değerine göre gruplar; eşikten fazla kaydı bulunan grupları
+  `(surface, total_runways)` biçiminde, sayı azalan sırada getirir.
+  `ASPH` ve `ASP` gibi farklı yüzey değerleri ayrı gruplar olarak korunur.
+
+İki fonksiyon da sonuç bulunamadığında veya bağlantı/sorgu hatasında `[]`
+döndürür. Parametreler `%s` ile bağlanır ve bağlantılar `finally` içinde kapatılır.
+
+Örnek raporları çalıştırmak için proje kökünde:
+
+```bash
+python -m backend.analytics_runways
+```
+
+Testleri çalıştırmak için:
+
+```bash
+python -m unittest discover -s tests -v
+# PostgreSQL çalışırken entegrasyon testlerini de etkinleştirmek için (macOS/Linux):
+RUN_DB_TESTS=1 python -m unittest discover -s tests -v
+```
+
+PowerShell'de entegrasyon testlerinden önce `$env:RUN_DB_TESTS = "1"` ayarlanır.
+Entegrasyon testleri mevcut bağlantı ayarlarını kullanır; test verileri yalnızca
+bağlantıya özel geçici tablolara yazılır ve gerçek proje verileri değiştirilmez.
+
 ## 🔄 Takım İş Akışı (Git Flow & Pull Requests)
 
 Projemizin bütünlüğünü korumak ve çakışmaları (Merge Conflict) önlemek amacıyla doğrudan `main` dalına kod göndermek (Push) **yasaklanmıştır.** Ekip üyelerinin şu adımları izlemesi gerekmektedir:
