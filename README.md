@@ -18,7 +18,7 @@ Bu proje, İstanbul Teknik Üniversitesi (İTÜ) Veritabanı Sistemleri dersi ka
 .
 ├── .github/
 │   └── ISSUE_TEMPLATE/     # GitHub görev ve hata şablonları (bug.md, task.md)
-├── backend/                # Python CRUD yöneticileri (db_connection.py ve *_manager.py)
+├── backend/                # Python CRUD yöneticileri ve analytics_navaids.py
 ├── data/                   # Veritabanına aktarılacak ham CSV dosyaları
 ├── sql_scripts/            # İskelet (01), kısıtlamalar (02) ve otomatik veri ekleme (03)
 ├── .gitignore              # Git takibi dışında bırakılan dosyalar (.env, venv/ vb.)
@@ -56,7 +56,7 @@ Takımımız, `backend` klasörü altındaki yöneticileri (manager) `%s` parame
 | `airport_comments` | `airport_comments_manager.py` | SELECT, INSERT | Tarih ekleme işleminde SQL `NOW()` fonksiyonu kullanıldı. |
 | `airport_frequencies` | `airport_frequencies_manager.py` | SELECT, INSERT | Frekanslar tipe göre filtrelenip sıralandı. |
 | `countries` | `countries_manager.py` | SELECT, INSERT | `chk_countries_continent` kısıtlaması için negatif testler yazıldı. |
-| `navaids` | `navaids_manager.py` | SELECT, INSERT | Boş stringleri SQL `NULL` değerine çeviren `_empty_to_none` eklendi. |
+| `navaids` | `navaids_manager.py`, `analytics_navaids.py` | SELECT, INSERT, JOIN, GROUP BY/HAVING | Ülke koduna göre Navaid/havalimanı raporu ve 100'den fazla kaydı olan cihaz türleri raporu eklendi. |
 | `regions` | `regions_manager.py` | SELECT, INSERT | `fk_regions_country` referans bütünlüğü rollback ile test edildi. |
 | `runways` | `runways_manager.py` | SELECT, INSERT | Type Hinting ve spesifik `psycopg2.Error` hata yakalaması eklendi. |
 
@@ -84,6 +84,6 @@ Projemizin 5. ile 10. haftalar arasındaki çevik (agile) geliştirme süreci a�
 - [x] **Hafta 5: Veritabanı İskeleti ve Veri Aktarımı** (`CREATE TABLE`).
 - [x] **Hafta 6: İlişkisel Mimari ve Kısıtlamalar** (`ALTER TABLE`, Foreign Keys, UNIQUE).
 - [x] **Hafta 7: Backend Entegrasyonu ve Temel CRUD** (Python `psycopg2`, Manager dosyaları).
-- [ ] **Hafta 8: Kompleks SQL Sorguları ve Analitik** (`JOIN`, `GROUP BY`).
+- [x] **Hafta 8: Kompleks SQL Sorguları ve Analitik** (`JOIN`, `GROUP BY`).
 - [ ] **Hafta 9: CLI Arayüzü, Hata Yönetimi ve Güvenlik.**
 - [ ] **Hafta 10: Optimizasyon, Dokümantasyon ve Teslim.**
